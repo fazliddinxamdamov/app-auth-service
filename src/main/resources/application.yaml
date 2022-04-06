@@ -1,0 +1,36 @@
+server:
+  port: 8081
+
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/fast_food
+    username: postgres
+    password: 690
+  application:
+    name: AUTH-SERVICE
+  jpa:
+    properties:
+      hibernate:
+        enable_lazy_load_no_trans: true
+    hibernate:
+            ddl-auto: create
+#      ddl-auto: update
+    show-sql: true
+  sql:
+    init:
+      mode: always
+
+eureka:
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+  instance:
+    hostname: localhost
+
+jwt:
+  secret-key: 04ca023b39512e46d0c2cf4b48d5aac61d34302994c87ed4eff225dcf3b0a218739f3897051a057f9b846a69ea2927a587044164b7bae5e1306219d50b588cb1
+  expire:
+    access_token: 604800000
+    refresh_token: 1728000000
+
+
