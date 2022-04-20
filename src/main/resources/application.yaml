@@ -13,12 +13,12 @@ spring:
       hibernate:
         enable_lazy_load_no_trans: true
     hibernate:
-            ddl-auto: create
-#      ddl-auto: update
+#            ddl-auto: create
+      ddl-auto: update
     show-sql: true
   sql:
     init:
-      mode: always
+      mode: never
 
 eureka:
   client:
