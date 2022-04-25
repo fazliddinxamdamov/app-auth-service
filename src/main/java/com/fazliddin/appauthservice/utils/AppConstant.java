@@ -6,7 +6,7 @@ package com.fazliddin.appauthservice.utils;
  * @project app-fast-food
  */
 public interface AppConstant {
-    String BASE_PATH = "/api/auth/v1";
+    String BASE_PATH = "/api/auth";
 
     String DEFAULT_PAGE_NUMBER = "0";
     String DEFAULT_PAGE_SIZE = "20";

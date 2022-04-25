@@ -5,14 +5,16 @@ import com.fazliddin.appauthservice.exception.RestException;
 import com.fazliddin.appauthservice.payload.*;
 import com.fazliddin.appauthservice.service.AuthService;
 import com.fazliddin.library.payload.ApiResult;
-import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequiredArgsConstructor
 public class AuthControllerImpl implements AuthController {
 
     private final AuthService authService;
+
+    public AuthControllerImpl(AuthService authService) {
+        this.authService = authService;
+    }
 
     @Override
     public ApiResult<?> checkPhone(CheckPhoneDto dto) {

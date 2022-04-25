@@ -119,4 +119,10 @@ public class UserServiceImpl implements UserService {
         userRepository.save(user);
         return ApiResult.successResponse(MessageService.successSave("STAFF"));
     }
+
+    @Override
+    public String returnIsmi(String ismi) {
+
+        return ismi;
+    }
 }

@@ -58,22 +58,22 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
-                .cors()
-                .and()
+//                .cors()
+//                .and()
                 .csrf()     //put post methodlari server reqeustlarini qabul qilmaydi
                 .disable()
                 .sessionManagement()        //user ma'lumotlarni saqlab qoladi.
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
-                .formLogin()
-                .disable()
-                .httpBasic()
-                .disable()
+//                .formLogin()
+//                .disable()
+//                .httpBasic()
+//                .disable()
                 .exceptionHandling()
                 .authenticationEntryPoint(new RestAuthenticationEntryPoint())
                 .and()
                 .authorizeRequests()
-                .antMatchers("/api/auth/v1/auth/**")
+                .antMatchers("/api/auth/**")
                 .permitAll()
                 .anyRequest()
                 .authenticated();

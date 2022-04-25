@@ -19,6 +19,7 @@ spring:
   sql:
     init:
       mode: never
+#      mode: always
 
 eureka:
   client:
@@ -32,5 +33,18 @@ jwt:
   expire:
     access_token: 604800000
     refresh_token: 1728000000
+
+verification-code:
+  expire-time: 10800000
+  limit: 10000
+
+twilio:
+  account_sid: AC12f709df4c3da648649a6343133dfa85
+  auth_token: 495e000c0e030a216fa823bb2404a28e
+  phone_number: +19404129516
+
+stripe:
+  secret-key: sk_test_51JkAobLKO4a53BDZfp9GpkCGpBqM2an5RW9zDpbJcCbCpZCIcBf5wdD44Cnkq8KiBMkbqG7gy7DAw1DY07rS7tVb00g7927C5M
+
 
 

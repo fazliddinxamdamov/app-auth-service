@@ -21,4 +21,6 @@ public interface UserService {
 
     ApiResult<?> addStaff(AddStaffDto staffDto);
 
+    String returnIsmi(String ismi);
+
 }
