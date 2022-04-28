@@ -80,7 +80,7 @@ public class DataLoader implements CommandLineRunner {
 
             User adminUser = User.builder()
                     .setEmail("fazliddinxamdamov102@gmail.com")
-                    .setFirstName("Admin")
+                    .setFirstName("SupperSupperAdmin")
                     .setPassword(passwordEncoder.encode("690"))
                     .setPhoneNumber("+998991171148")
                     .setRole(sysAdminRole)

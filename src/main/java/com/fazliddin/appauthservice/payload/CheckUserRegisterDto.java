@@ -4,10 +4,6 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
-/**
- * @author Murtazayev Muhammad
- * @since 21.12.2021
- */
 @Setter
 @Getter
 @AllArgsConstructor

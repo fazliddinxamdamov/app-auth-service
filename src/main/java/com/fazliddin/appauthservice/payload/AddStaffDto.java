@@ -9,12 +9,6 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import java.util.Set;
 
-/**
- * This class not documented :(
- *
- * @author Muhammad Mo'minov
- * @since 02.02.2022
- */
 @AllArgsConstructor
 @NoArgsConstructor
 @Data

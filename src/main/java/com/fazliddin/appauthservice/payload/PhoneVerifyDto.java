@@ -6,10 +6,6 @@ import lombok.Setter;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
 
-/**
- * @author Murtazayev Muhammad
- * @since 21.12.2021
- */
 @Setter
 @Getter
 public class PhoneVerifyDto {

@@ -117,6 +117,7 @@ public class AuthServiceImpl implements AuthService {
 
         District district = districtRepository.findById(dto.getDistrictId()).orElseThrow(() -> RestException.notFound("DISTRICT"));
         User user = new User(dto.getPhoneNumber(), dto.getFirstName(), dto.getLastName(), district, dto.getLanguage(), roleUser);
+        user.setAccountNonExpired(true);
         userRepository.save(user);
 
         verificationCode.setUsed(true);

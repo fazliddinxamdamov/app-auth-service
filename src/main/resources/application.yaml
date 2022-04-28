@@ -13,13 +13,57 @@ spring:
       hibernate:
         enable_lazy_load_no_trans: true
     hibernate:
-#            ddl-auto: create
+      #      ddl-auto: create
       ddl-auto: update
     show-sql: true
   sql:
     init:
       mode: never
-#      mode: always
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            clientId: 182838213877-3s8jrvps9pthg5v0tttgolcgqskc7vib.apps.googleusercontent.com
+            clientSecret: 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
+            redirectUri: "http://localhost:8080/api/auth/v1/oauth2/callback/google"
+            scope:
+              - email
+              - profile
+          facebook:
+            client-id: 624132515482711
+            client-secret: 98b63296088655aaf1209e08cce1e72a
+            redirectUri: "http://localhost:8080/api/auth/v1/oauth2/callback/facebook"
+            scope:
+              - email
+              - public_profile
+          github:
+            clientId: ca7f7c2877b832dc0712
+            clientSecret: d3400911edc1fc83bac253e3bc5706f866e1ba6c
+            redirectUri: "http://localhost:8080/api/auth/v1/oauth2/callback/github"
+            scope:
+              - user:email
+              - read:user
+          linkedin:
+            client-id: 77v4h0zy8vc8gj
+            client-secret: f2VUxNfrNkBxAXoE
+            redirectUri: "http://localhost:8080/api/auth/v1/oauth2/callback/linkedin"
+            authorization-grant-type: authorization_code
+            scope: r_emailaddress, r_liteprofile
+            client-authentication-method: post
+            provider: linkedin
+
+        provider:
+          #          facebook:
+          #            authorizationUri: https://www.facebook.com/v3.0/dialog/oauth
+          #            tokenUri: https://graph.facebook.com/v3.0/oauth/access_token
+          #            userInfoUri: https://graph.facebook.com/v3.0/me?fields=id,first_name,middle_name,last_name,name,email,verified,is_verified,picture.width(250).height(250)
+          linkedin:
+            authorization-uri: https://www.linkedin.com/oauth/v2/authorization
+            token-uri: https://www.linkedin.com/oauth/v2/accessToken
+            user-info-uri: https://api.linkedin.com/v2/me
+            user-name-attribute: id
+            userInfoUri: https://api.linkedin.com/v2/emailAddress?q=members&projection=(elements*(handle~))
 
 eureka:
   client:
@@ -34,9 +78,25 @@ jwt:
     access_token: 604800000
     refresh_token: 1728000000
 
+app:
+  auth:
+    tokenSecret: 04ca023b39512e46d0c2cf4b48d5aac61d34302994c87ed4eff225dcf3b0a218739f3897051a057f9b846a69ea2927a587044164b7bae5e1306219d50b588cb1
+    tokenExpirationMsec: 864000000
+  cors:
+    allowedOrigins: http://localhost:3000,http://localhost:8080
+  oauth2:
+    # After successfully authenticating with the OAuth2 Provider,
+    # we'll be generating an auth token for the user and sending the token to the
+    # redirectUri mentioned by the client in the /oauth2/authorize request.
+    # We're not using cookies because they won't work well in mobile clients.
+    authorizedRedirectUris:
+      - http://localhost:3000/oauth2/redirect
+      - myandroidapp://oauth2/redirect
+      - myiosapp://oauth2/redirect
+
 verification-code:
   expire-time: 10800000
-  limit: 10000
+  limit: 100000
 
 twilio:
   account_sid: AC12f709df4c3da648649a6343133dfa85
@@ -45,6 +105,3 @@ twilio:
 
 stripe:
   secret-key: sk_test_51JkAobLKO4a53BDZfp9GpkCGpBqM2an5RW9zDpbJcCbCpZCIcBf5wdD44Cnkq8KiBMkbqG7gy7DAw1DY07rS7tVb00g7927C5M
-
-
-

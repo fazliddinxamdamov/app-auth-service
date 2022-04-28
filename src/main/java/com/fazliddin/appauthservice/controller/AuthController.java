@@ -12,8 +12,7 @@ import javax.validation.Valid;
 
 @RequestMapping(AuthController.AUTH_CONTROLLER)
 public interface AuthController {
-
-    String AUTH_CONTROLLER = AppConstant.BASE_PATH + "/auth";
+    String AUTH_CONTROLLER = AppConstant.BASE_PATH;
 
     @PostMapping("/check-phone")
     ApiResult<?> checkPhone(@RequestBody @Valid CheckPhoneDto dto);

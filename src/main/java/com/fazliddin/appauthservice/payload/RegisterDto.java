@@ -10,10 +10,7 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 
-/**
- * @author Murtazayev Muhammad
- * @since 21.12.2021
- */
+
 @NoArgsConstructor
 @AllArgsConstructor
 @Setter

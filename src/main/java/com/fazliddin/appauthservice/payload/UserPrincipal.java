@@ -12,12 +12,6 @@ import java.util.Map;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-/**
- * This class not documented :(
- *
- * @author Muhammad Mo'minov
- * @since 19.01.2022
- */
 @Data
 public class UserPrincipal implements UserDetails, OAuth2User {
     private final User user;

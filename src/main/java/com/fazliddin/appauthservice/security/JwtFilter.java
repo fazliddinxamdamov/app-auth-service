@@ -1,6 +1,9 @@
 package com.fazliddin.appauthservice.security;
 
+import com.fazliddin.appauthservice.common.MessageService;
 import com.fazliddin.appauthservice.service.AuthService;
+import com.fazliddin.library.payload.ApiResult;
+import com.fazliddin.library.payload.ErrorData;
 import com.google.gson.Gson;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -14,6 +17,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
@@ -44,15 +48,15 @@ public class JwtFilter extends OncePerRequestFilter {
         String requestUsername = request.getHeader("serviceUsername");
         String requestPassword = request.getHeader("servicePassword");
 
-//        if (!checkUsernameAndPassword(requestUsername, requestPassword)) {
-//            ApiResult<Object> apiResult = new ApiResult<>(false, List.of(
-//                    new ErrorData(MessageService.getMessage("FORBIDDEN"), 403)));
-//
-//            response.getWriter().write(gson.toJson(apiResult));
-//            response.setStatus(403);
-//            response.setContentType("application/json");
-//            return;
-//        }
+        if (!checkUsernameAndPassword(requestUsername, requestPassword)) {
+            ApiResult<Object> apiResult = new ApiResult<>(false, List.of(
+                    new ErrorData(MessageService.getMessage("FORBIDDEN"), 403)));
+
+            response.getWriter().write(gson.toJson(apiResult));
+            response.setStatus(403);
+            response.setContentType("application/json");
+            return;
+        }
 
         String authorization = request.getHeader("Authorization");
 
