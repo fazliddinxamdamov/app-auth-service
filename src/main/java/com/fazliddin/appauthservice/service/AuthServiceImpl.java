@@ -24,6 +24,7 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.sql.Timestamp;
@@ -45,18 +46,22 @@ public class AuthServiceImpl implements AuthService {
     private final UserRepository userRepository;
     private final VerificationCodeRepository verificationCodeRepository;
     private final RoleRepository roleRepository;
-//    private final SmsService smsService;
+    //    private final SmsService smsService;
     private final AuthenticationManager authenticationManager;
     private final JwtProvider jwtProvider;
     private final DistrictRepository districtRepository;
+    @Lazy
+    private final PasswordEncoder passwordEncoder;
 
-    public AuthServiceImpl(UserRepository userRepository, VerificationCodeRepository verificationCodeRepository, RoleRepository roleRepository, @Lazy AuthenticationManager authenticationManager, @Lazy JwtProvider jwtProvider, DistrictRepository districtRepository) {
+    @Lazy
+    public AuthServiceImpl(UserRepository userRepository, VerificationCodeRepository verificationCodeRepository, RoleRepository roleRepository, @Lazy AuthenticationManager authenticationManager, @Lazy JwtProvider jwtProvider, DistrictRepository districtRepository, PasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
         this.verificationCodeRepository = verificationCodeRepository;
         this.roleRepository = roleRepository;
         this.authenticationManager = authenticationManager;
         this.jwtProvider = jwtProvider;
         this.districtRepository = districtRepository;
+        this.passwordEncoder = passwordEncoder;
     }
 
     @Override
@@ -117,7 +122,7 @@ public class AuthServiceImpl implements AuthService {
 
         District district = districtRepository.findById(dto.getDistrictId()).orElseThrow(() -> RestException.notFound("DISTRICT"));
         User user = new User(dto.getPhoneNumber(), dto.getFirstName(), dto.getLastName(), district, dto.getLanguage(), roleUser);
-        user.setAccountNonExpired(true);
+        user.setPassword(passwordEncoder.encode("1111"));
         userRepository.save(user);
 
         verificationCode.setUsed(true);
