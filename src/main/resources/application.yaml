@@ -5,7 +5,7 @@ spring:
   datasource:
     url: jdbc:postgresql://localhost:5432/fast_food
     username: postgres
-    password: 690
+    password: root123
   application:
     name: AUTH-SERVICE
   jpa:
